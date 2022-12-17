@@ -6,7 +6,32 @@ import kotlin.coroutines.EmptyCoroutineContext
 fun main() {
 //    startFirstCoroutine()
 //    explainingJobs()
-    dependentJobs()
+//    dependentJobs()
+    jobRelation()
+}
+
+fun jobRelation() {
+    with(GlobalScope) {
+        val parentJob = launch {
+            delay(200)
+            println("I'm parent")
+            delay(200)
+        }
+
+        launch(context = parentJob) {
+            delay(200)
+            println("I'm child")
+            delay(200)
+        }
+
+        if (parentJob.children.iterator().hasNext()) {
+            println("The parent has child ${parentJob.children}")
+        } else {
+            println("The parent has no child")
+        }
+    }
+
+    Thread.sleep(2000)
 }
 
 /*
