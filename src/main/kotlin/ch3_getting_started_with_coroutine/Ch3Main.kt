@@ -1,10 +1,41 @@
 package ch3_getting_started_with_coroutine
 
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.*
+import kotlin.concurrent.thread
+import kotlin.coroutines.CoroutineContext
+import kotlin.coroutines.EmptyCoroutineContext
 
 fun main() {
-    startFirstCoroutine()
+//    startFirstCoroutine()
+    explainingJobs()
+}
+
+/* Job
+   use to handle queue of coroutine builder's execute
+   Job have state
+        - New state is always in this state when start coroutine
+        - Active job will move to this state directly from New State unless define start coroutine with LAZY
+            it will move to Active when invoke start() or join()
+        - Completing wait for coroutine child completed
+        - Completed all coroutine child completed
+        - cancelling invoke cancel or some coroutine child fail
+            * if want to move Completed state when some child are not completed, it use SupervisorJob
+        - Canceled
+
+ */
+fun explainingJobs() {
+    // Parent Job
+    GlobalScope.launch {
+        // Child Job
+        val jobA: Job = GlobalScope.launch { }
+        val jobB: Job = GlobalScope.launch {
+            val childJobB = launch { }
+
+        }
+        jobA.isActive
+        jobA.cancel()
+        jobB.join()
+    }
 }
 
 /*
@@ -19,6 +50,7 @@ fun main() {
  */
 fun startFirstCoroutine() {
     (1..10000).forEach {
+        val scope = CoroutineScope(EmptyCoroutineContext)
         GlobalScope.launch {
             val threadName = Thread.currentThread().name
             println("$it printed on Thread ${threadName}")

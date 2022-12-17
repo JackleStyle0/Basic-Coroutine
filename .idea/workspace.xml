@@ -5,8 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="913c8a74-e0fb-430c-b8d2-95ce8c9ad4d1" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/ch3_getting_started_with_coroutine/Ch3Main.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/ch3_getting_started_with_coroutine/Ch3Main.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/ch3_getting_started_with_coroutine/Ch3Main.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
